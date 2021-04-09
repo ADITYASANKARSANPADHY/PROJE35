@@ -4,11 +4,11 @@ var position,database;
 
 
 function preload(){
-   bg =loadImage("cityImage.png");
-   balloonImage1=loadAnimation("hotairballoon1.png");
-   balloonImage2=loadAnimation("hotairballoon1.png","hotairballoon1.png",
-   "hotairballoon1.png","hotairballoon2.png","hotairballoon2.png",
-   "hotairballoon2.png","hotairballoon3.png","hotairballoon3.png","hotairballoon3.png");
+   bg =loadImage("images/cityImage.png");
+   balloonImage1=loadAnimation("images/hotairballoon1.png");
+   balloonImage2=loadAnimation("images/hotairballoon1.png","images/hotairballoon1.png",
+   "images/hotairballoon1.png","images/hotairballoon2.png","images/hotairballoon2.png",
+   "images/hotairballoon2.png","images/hotairballoon3.png","images/hotairballoon3.png","images/hotairballoon3.png");
   }
 
 //Function to set initial environment
@@ -34,24 +34,26 @@ function draw() {
   background(bg);
 
   if(keyDown(LEFT_ARROW)){
+     updateHeight(-10,0);
     balloon.addAnimation("hotAirBalloon",balloonImage2);
     //write code to move air balloon in left direction
   }
   else if(keyDown(RIGHT_ARROW)){
+   updateHeight(10,0);
     balloon.addAnimation("hotAirBalloon",balloonImage2);
     //write code to move air balloon in right direction
   }
   else if(keyDown(UP_ARROW)){
-   updateHeight(0,10);
+   updateHeight(0,-10);
     balloon.addAnimation("hotAirBalloon",balloonImage2);
     //write code to move air balloon in up direction
-    balloon.scale = balloon.scale+ 0.01;
+   balloon.scale = balloon.scale - 0.001;
   }
   else if(keyDown(DOWN_ARROW)){
-    updateHeight(0,-10);
+   updateHeight(0,10);
     balloon.addAnimation("hotAirBalloon",balloonImage2);
     //write code to move air balloon in down direction
-    balloon.scale = balloon.scale- 0.01;
+    balloon.scale = balloon.scale+0.001;
   }
 
   drawSprites();
